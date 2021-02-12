@@ -4,7 +4,7 @@ A JSON stringify tool, with ability to add comment to the data.
 
 Just wanna preserve API response on the screen, but raw data is hard to read. How don't we put comment on it?
 
-```json
+```txt
 {
     "timestamp": 1613055600,  // 2021-02-11 23:00:00
     "status": 5,  // Pending
@@ -72,7 +72,7 @@ stringify(sample, comment);
 
 Then we could get:
 
-```json
+```txt
 {
     "firstName": "Eren",
     "lastName":  "Jaeger",
