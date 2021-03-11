@@ -97,10 +97,10 @@ export var commenter = function (settings_) {
         // escape special chars
         value = String(value)
             .replace(/&/g, '&amp;')
-            .replace(/"/g, '&bsol;&quot;')
+            .replace(/\\/g, '&bsol;&bsol;')
             .replace(/</g, '&lt;')
             .replace(/>/g, '&gt;')
-            .replace(settings.regexQuote, '\\' + settings.symbolQuoteString);
+            .replace(settings.regexQuote, '&bsol;' + settings.symbolQuoteString);
 
         if (!settings.enableMultilineString) {
             value = value
@@ -139,7 +139,7 @@ export var commenter = function (settings_) {
         const output = [settings.symbolArrayStart];
         for (let i = 0; i < data.length; i++) {
             let item = data[i];
-            let comment = comments !== null ? comments.get(item) : undefined;
+            let comment = comments !== null ? (comments.get(item) || comments.get(String(item))) : undefined;
 
             let formatted
             if (comment !== undefined && typeof comment !== "string") {
